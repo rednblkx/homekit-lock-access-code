@@ -36,8 +36,15 @@ The base is a constant for all defined Services and Characteristics and only the
 
 ### 1. Access Code Supported Configuration
 
-This characteristic will initially be read during pairing to acquire the required configuration like the minimum and maximum characters allow for an Access Code.
+This characteristic will initially be read during pairing to acquire the required configuration like the minimum and maximum characters allowed for an Access Code.
 This will also be read randomly(presumably) by the controller, assuming to check if something changed following a software update or something.
+
+| Name                                | Type    | Length  | Value                                                                                           |
+| ----------------------------------- | ------- | ------- | ----------------------------------------------------------------------------------------------- |
+| Allow Character Set                 | 1       | TLV8    | `1: Arabic Numerals`, other values are not known, it defaults to arabic numerals if not present |
+| Minimum Length Access Code          | 2       | TLV8    | Minimum length for the Access Code                                                              |
+| Maximum Length Access Code          | 3       | TLV8    | Maximum length for the Access Code                                                              |
+| Maximum Allow Access Codes          | 4       | TLV8    | Maximum amount of access codes that should be stored on the lock                                |
 
 ### 2. Access Code Control Point
 
@@ -211,7 +218,7 @@ Root TLV8:
 
 ## Example Update Access Code
 
-Oddly, the Home App seems to be using the Add operation
+Oddly, even though the Update operation (0x4) exists, for updating the access code it's using the Remove and Add operation.
 
 ### Request
 
@@ -234,4 +241,4 @@ Oddly, the Home App seems to be using the Add operation
 
 ## Demo
 
-You can find a demo written in JavaScript in the demo folder, just make sure to have nodejs and npm installed and then run `npm run serve`.
+You can find a demo written in JavaScript in the [`demo`](https://github.com/rednblkx/homekit-lock-access-code/tree/main/demo) folder, just make sure to have nodejs and npm installed and then run `npm run serve`.
