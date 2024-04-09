@@ -44,7 +44,7 @@ This will also be read randomly(presumably) by the controller, assuming to check
 | Allow Character Set                 | 1       | TLV8    | `1: Arabic Numerals`, other values are not known, it defaults to arabic numerals if not present |
 | Minimum Length Access Code          | 2       | TLV8    | Minimum length for the Access Code                                                              |
 | Maximum Length Access Code          | 3       | TLV8    | Maximum length for the Access Code                                                              |
-| Maximum Allow Access Codes          | 4       | TLV8    | Maximum amount of access codes that should be stored on the lock                                |
+| Maximum Allowed Access Codes          | 4       | TLV8    | Maximum amount of access codes that should be stored on the lock                                |
 
 ### 2. Access Code Control Point
 
@@ -58,8 +58,8 @@ Root TLV8:
 | Description                                               | Type        | Length       | Value                                                                       | Presence               |
 | --------------------------------------------------------- | ----------- | ------------ | --------------------------------------------------------------------------- | ---------------------- |
 | Operation                                                 | 1           | 1            | `1: List `<br>`2: Read`<br>`3: Add`<br>`4: Update`<br>`5: Remove`           | Request and Response   |
-| Access Code Control Request                               | 2           | N            | Sub-TLV8, see table "[Access Code Request](#access-code-control-request)"   | Request Only           |
-| Access Code Control Response                              | 3           | N            | Sub-TLV8, see table "[Access Code Response](#access-code-control-response)" | Response Only          |
+| Access Code Control Request                               | 2           | N            | Sub-TLV8, see table "[Access Code Request](#--access-code-control-request)" | Request Only           |
+| Access Code Control Response                              | 3           | N            | Sub-TLV8, see table "[Access Code Response](#--access-code-control-response)" | Response Only          |
 
 **Important Note:** The operation received in the request has to be included in the response at least for the Add operation as the HomeKit Daemon will just crash if not present, wild i know.
 
